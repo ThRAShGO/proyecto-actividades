@@ -1,0 +1,44 @@
+<?php
+
+/* Template Name: actividades */
+
+    get_header();
+    get_template_part('nav');
+   
+    //define('WP_USE_THEMES', false);
+    //require('./aplicacion/index.php');
+   ?> 
+   <div id="panel">
+       <div>
+           <button id="ver">VER</button>
+           <button id="insertar">INSERTAR</button>
+           <button id="editar">EDITAR</button>
+           <button id="borrar">BORRAR</button></div>
+         <script>
+         /*global $*/
+         window.addEventListener('load',main,false);
+         function main(){
+             $('button').each(function(){
+                $(this).on('click', peticion('actividades', this.id));   
+             });
+         }
+         
+         function peticion(ruta,accion){
+             var url = "https://proyecto-actividades-thrashgo.c9users.io/aplicacion/";
+             $.ajax({
+                url: url,
+                //type: typeRequest,
+                data: {ruta:ruta,accion:accion},
+                success: function(data){
+                    cosole.log(data);   
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            }
+        );
+         }
+        </script>  
+   </div>
+   <script type="text/javascript" src=""></script>
+   <?php get_footer(); ?>

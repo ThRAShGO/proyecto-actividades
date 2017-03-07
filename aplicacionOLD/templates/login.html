@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<html lang="en">
+
+<head>
+  	<meta charset="utf-8">
+    <title>LEARN - Courses, Education site template</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+    
+    <!-- CSS -->
+    <link href="estilos/bootstrap.min.css" rel="stylesheet">
+    <link href="estilos/superfish.css" rel="stylesheet">
+    <link href="estilos/style.css" rel="stylesheet">
+    <link href="estilos/responsive.dataTables.css" rel="stylesheet">
+    <link href="fontello/css/fontello.css" rel="stylesheet">
+    <link href="fontello/css/fontello.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+    
+    <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+  </head>
+  
+  <body>
+  
+  <header>
+  	<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-sm-3 col-xs-3">
+			<a href="index.html" id="logo">Learn</a>
+		</div>
+		<div class="col-md-9 col-sm-9 col-xs-9" id="rellenadorLogin" id="rellenadorLogin">
+			<div class="pull-right">
+			   <a href="index.php?ruta=ajaxlogin&accion=logout" class="button_top hidden-xs" id="login_top">LOG IN</a>
+			   </div>
+            <ul id="top_nav" class="hidden-xs">
+                <li><a href="about_us.html">About</a></li>
+                <li><a href="apply.html">Wizard Apply</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+		</div>
+	</div>
+</div>
+</header><!-- End header -->
+
+<nav>
+	
+	
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div id="mobnav-btn"></div>
+			<ul class="sf-menu">
+				<li class="normal_drop_down">
+					<a href="#">INICIO</a>
+				</li>
+				<li class="normal_drop_down">
+					<a href="#">ACTIVIDADES</a>
+				</li>
+				<li>
+					<a href="prices_plans.html">NUESTRO CENTRO</a>
+				</li>
+				<li>
+					<a href="blog.html">EQUIPO DOCENTE</a>
+				</li>
+                <li class="mega_drop_down">
+					<a href="#">BLOG</a>
+                </li>
+				<li>
+					<a href="contacts.html">CONTACTO</a>
+				</li>
+			</ul>
+            
+            <div class="col-md-3 pull-right hidden-sm hidden-xs">
+                    <div id="sb-search" class="sb-search">
+						<form>
+							<input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+							<input class="sb-search-submit" type="submit" value="">
+							<span class="sb-icon-search"></span>
+						</form>
+					</div>
+              </div><!-- End search -->
+              
+		</div>
+	</div><!-- End row -->
+</div><!-- End container -->
+</nav>
+
+
+	<!-- CONTENEDOR DE LOS DATOS (COMIENZA OCULTO) -->
+<div id="contenedor_perfiles">
+	<section id="sub-header">
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 text-center">
+			<h1>PANEL DE ADMINISTRACICIÓN</h1>
+			<p class="lead">Tenga <strong>precaución</strong> a la hora de realizar cambios. Algunos de ellos pueden ser irreversibles.</p>
+		</div>
+	</div><!-- End row -->
+</div><!-- End container -->
+<div class="divider_top"></div>
+</section><!-- End sub-header -->
+
+<section id="main_content">
+
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="index.html">INICIO</a></li>
+  <li class="active">Active page</li>
+</ol>
+      <div class="row">
+     <aside class="col-md-3">
+     	<div class="box_style_1 profile">
+			<!-- codigo generado por scriptAcademia.js -->
+		</div><!-- End box-sidebar -->
+		<div class="box_style_button_admin">
+		<a href="#" class="button_top edit btAniadirUsuario" data-toggle="modal" data-target="#modal-insert" role="button"> &nbsp;Nuevo Usuario &nbsp;</a>
+		<a href="#" class="button_top edit btAniadirActividad" data-toggle="modal" data-target="#modal-insert-actividad" role="button"> &nbsp;Nueva Actividad &nbsp;</a>
+		</div><!-- End box-sidebar buttons -->
+     </aside><!-- End aside -->
+     
+     <div class="col-md-9">
+     
+	 	<!--  Tabs -->   
+	        <ul class="nav nav-tabs" id="mytabs">
+	            <li class="active"><a href="#courses" data-toggle="tab">Actividades</a></li>
+	            <li><a href="#profile_teacher" data-toggle="tab">Profesores</a></li>
+	        </ul>
+	        
+	        <div class="tab-content">
+	            <div class="tab-pane fade in active panel panel-info filterable add_bottom_45" id="courses">
+	            <h3>Panel de Administración</h3>
+	            		<p>Mei ut decore accusam consequat, alii dignissim no usu. Phaedrum intellegat sit ut, no pri mutat eirmod. In eum iriure perpetua adolescens, pri dicunt prodesset et. Vis dicta postulant ad.</p>
+	                    <div class="panel-heading">
+                        <h3 class="panel-title">Listado de Actividades</h3>
+                        <div class="pull-right">
+                            <button class="btn-filter"><span class="icon-th-list"></span> Filter</button>
+                        </div>
+                    </div>
+                    
+	                    <div class="table-responsive">
+	                      <table class="table table-striped" id="tablaActividades">
+	                        <thead>
+	                          <tr class="filters">
+	                            <th><input type="text" class="form-control input-custom" placeholder="Título" disabled/></th>
+	                            <th><input type="text" class="form-control input-custom" placeholder="Profesor" disabled/></th>
+	                            <th class="malditoGrupo"><input type="text" class="form-control input-custom malditoGrupo" placeholder="Grupo" disabled style="width: 50px"/></th>
+	                            <th><input type="text" class="form-control input-custom" placeholder="Fecha de Actividad" disabled/></th>
+	                            <!--<th><input type="text" class="form-control input-custom" placeholder="Fin" disabled/></th>-->
+	                            <th></th>
+	                          </tr>
+	                        </thead>
+	                        <tbody id="cuerpoTabla2">
+	                        	<!-- codigo generado por scriptAcademia.js -->
+	                        </tbody>
+	                      </table>
+	           		</div>	
+	            	
+	            	
+	         </div><!-- End tab-pane --> 
+	           
+	           <div class="tab-pane fade panel panel-info filterable add_bottom_45 visible" id="profile_teacher">
+	          	<h3>Panel de Administración</h3>
+	            	<p>Mei ut decore accusam consequat, alii dignissim no usu. Phaedrum intellegat sit ut, no pri mutat eirmod. In eum iriure perpetua adolescens, pri dicunt prodesset et. Vis dicta postulant ad.</p>
+	                <div class="panel-heading">
+                        <h3 class="panel-title">Listado de Profesores</h3>
+                        <div class="pull-right">
+                            <button class="btn-filter"><span class="icon-th-list"></span> Filter</button>
+                        </div>
+                    </div>
+	                <div class="table-responsive">
+	                  <table class="table table-striped" id="tablaProfesores">
+	                    <thead>
+	                      <tr class="filters">
+	                        <th><input type="text" class="form-control input-custom" placeholder="Email" disabled/></th>
+	                        <th><input type="text" class="form-control input-custom" placeholder="Departamento" disabled/></th>
+	                        <th>Foto</th>
+	                        <th></th>
+	                      </tr>
+	                    </thead>
+	                    <tbody id="cuerpoTabla">
+	                    	<!-- codigo generado por scriptAcademia.js -->
+	                    </tbody>
+	                  </table>
+	           </div><!-- End row--> 
+	           		
+	           			
+	           </div><!-- End tab-pane -->
+	           
+	      </div>   <!-- End content-->              
+		
+     </div><!-- End col-md-8-->   	
+  </div><!-- End row-->   
+</div><!-- End container -->
+</section><!-- End main_content-->
+</div>
+	
+	<!-- CONTENEDOR DEL LOGIN (COMIENZA MOSTRADO) -->
+<section id="login_bg">
+<div id="contenedorLogin" class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+			<div id="login">
+				<p class="text-center">
+					<img src="img/login_logo.png" alt="">
+				</p>
+				<form>
+					<div class="form-group">
+						<input type="text" id="usuarioLogin" class=" form-control " placeholder="Username">
+						<span class="input-icon"><i class=" icon-user"></i></span>
+					</div>
+					<div class="form-group" style="margin-bottom:5px;">
+						<input type="text" id="contraseniaLogin" class=" form-control" placeholder="Password" style="margin-bottom:5px;">
+						<span class="input-icon"><i class="icon-lock"></i></span>
+					</div>
+					<p class="small">
+						<a href="#">Forgot Password?</a>
+					</p>
+					<a href="#" class="button_fullwidth" id="btLogin">Log in</a>
+					<a href="register.html " class="button_fullwidth-2" id="brRegistro">Register</a>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+	<div class="row" id="row-errors">
+		<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+			<div id="info-errors">
+				<span id="ayudaUsuario" style="display: block;" class="">
+					<p class="parrafoerror">Uups! El usuario no existe</p>
+				</span>
+				<span id="ayudaContrasenia" style="display: block;" class="">
+					<p class="parrafoerror2">Mmmm... ¿Datos incorrectos?</p>
+				</span>		
+			</div>
+		</div>
+	</div>
+</div>
+</section> <!-- End login -->
+
+
+<!-------------------------- MODALES ------------------------------------------------->
+<!---------------- MODAL USUARIO ----------------------->
+
+<!-- Modal DELETE-->
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Formulario de borrado</span></h4>
+      </div>
+      <div class="modal-body">
+        <p class="parrafoBorrar">¿Seguro que desea borrar este usuario?:</p><strong><span id="nombreDelete"></span></strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="btNoModal" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" id="btSiModal">Si</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Modal -->
+
+
+<!-- Modal EDIT-->
+<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> Panel de Edición</h4>
+      </div>
+      <div class="modal-body edit form-group" >
+      	<label for='editemail' class="labelmodals">Email</label>
+        <input class="form-control" type="text" id="editemail" placeholder="Correo electrónico">
+        <label for='password' class="labelmodals">Contraseña</label>
+        <input class="form-control" type="password" id="editpassword" placeholder="Clave de acceso">
+        <label for='file' class="labelmodals">Foto de perfil</label>
+        <br>
+		<input type="file" name="path" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple="">
+		<label for="file-7"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> Choose a file…</strong></label>
+		<br>
+		<br>
+        <label for='editdepartamento' class="labelmodals">Departamento</label>
+        <select id="editdepartamento">
+			<option class="styleoptions" value="Música">Música</option>
+  			<option class="styleoptions" value="Informática">Informática</option>
+ 			<option class="styleoptions" value="Corte y confeccíon">Corte y confeccíon</option>
+		</select>
+		 <br>
+        <br>
+        <input class="form-control" type="hidden" id="pkeditemail">
+      </div>
+      <div class="modal-footer">
+        <button  id="btCancelarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button id="btEditarModal" type="button" class="btn btn-primary">Editar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Modal INSERT-->
+<div class="modal fade" id="modal-insert" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Alta de Usuarios</h4>
+      </div>
+      <div class="modal-body edit form-group" >
+      	<label for='insertemail' class="labelmodals">Email</label>
+        <input class="form-control" type="text" id="insertemail" placeholder="Correo electrónico">
+        <label for='insertpassword' class="labelmodals">Contraseña</label>
+        <input class="form-control" type="password" id="insertpassword" placeholder="Clave de acceso">
+        <label for='file' class="labelmodals">Foto de perfil</label>
+        <br>
+		<input type="file" name="path" id="file-7-insert" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple="">
+		<label for="file-7-insert"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> Choose a file…</strong></label>
+		<br>
+		<br>
+        <label for='insertdepartamento' class="labelmodals">Departamento</label>
+        <select id="insertdepartamento">
+			<option class="styleoptions" value="Música">Música</option>
+  			<option class="styleoptions" value="Informática">Informática</option>
+ 			<option class="styleoptions" value="Corte y confeccíon">Corte y confeccíon</option>
+		</select>
+		 <br>
+        <br>
+        <input class="form-control" type="hidden" id="pkinsertemail">
+      </div>
+      <div class="modal-footer">
+        <button  id="btCancelarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button id="btInsertModal" type="button" class="btn btn-primary">Insertar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!---------------- FINAL MODAL USUARIO ----------------------->
+
+<!---------------- MODAL ACTIVIDADES ----------------------->
+
+<!-- Modal -->
+<div class="modal fade" id="modal-delete-actividades" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Formulario de borrado</span></h4>
+      </div>
+      <div class="modal-body">
+        <p class="parrafoBorrar">¿Seguro que desea borrar esta Actividad?:</p><strong><span id="actividadDelete"></span></strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="btNoModalActividades" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" id="btSiModalActividades">Si</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Modal -->
+
+<div class="modal fade" id="modal-edit-actividades" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> Panel de Edición</h4>
+      </div>
+      <div class="modal-body edit form-group" >
+      	<label for='edittitulo' class="labelmodals">Nombre actividad</label>
+        <input class="form-control" type="text" id="edittitulo" placeholder="Nombre de la Actividad">
+        <label for='editdescripcion' class="labelmodals">Descripcion</label>
+        <textarea class="form-control" type="text" id="editdescripcion" placeholder="Descripcion"></textarea>
+        <label for='editfechainicio' class="labelmodals">Fecha de Inicio</label>
+        <input class="form-control" type="text" id="editfechainicio" placeholder="Fecha de Inicio">
+        <label for='editfechafin' class="labelmodals">Fecha de Finalización</label>
+        <input class="form-control" type="text" id="editfechafin" placeholder="Fecha de Inicio">
+        <label for='editemail' class="labelmodals">Profesor</label>
+        <input class="form-control" type="text" id="editprof" placeholder="Correo electrónico">
+        <label for='editgrupo' class="labelmodals">Grupo</label>
+        <input class="form-control" type="text" id="editgrupo" placeholder="Grupo">
+        <label for='file' class="labelmodals">Foto Descriptiva</label>
+        <br>
+		<input type="file" name="pathactividad" id="file-7-actividad" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple="">
+		<label for="file-7"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> Choose a file…</strong></label>
+		<br>
+        <input class="form-control" type="hidden" id="idactividad">
+      </div>
+      <div class="modal-footer">
+        <button  id="btCancelarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button id="btEditarModalActividad" type="button" class="btn btn-primary">Editar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal
+
+
+
+<!-- Modal INSERT-->
+<div class="modal fade" id="modal-insert-actividad" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Alta de Actividades</h4>
+      </div>
+      <div class="modal-body edit form-group" >
+      	<label for='inserttitulo' class="labelmodals">Nombre actividad</label>
+        <input class="form-control" type="text" id="inserttitulo" placeholder="Nombre de la Actividad">
+        <label for='insertdescripcion' class="labelmodals">Descripcion</label>
+        <textarea class="form-control" type="text" id="insertdescripcion" placeholder="Descripcion"></textarea>
+        <label for='insertfechainicio' class="labelmodals">Fecha de Inicio</label>
+        <input class="form-control" type="text" id="insertfechainicio" placeholder="Fecha de Inicio">
+        <label for='insertfechafin' class="labelmodals">Fecha de Finalización</label>
+        <input class="form-control" type="text" id="insertfechafin" placeholder="Fecha de Inicio">
+        <label for='insertpro' class="labelmodals">Profesor</label>
+        <input class="form-control" type="text" id="insertprof" placeholder="Correo electrónico">
+        <label for='insertgrupo' class="labelmodals">Grupo</label>
+        <input class="form-control" type="text" id="insertgrupo" placeholder="Grupo">
+        <label for='file' class="labelmodals">Foto Descriptiva</label>
+        <br>
+		<input type="file" name="pathactividad" id="file-7-actividad-insert" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple="">
+		<label for="file-7"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> Choose a file…</strong></label>
+		<br>
+        <input class="form-control" type="hidden" id="idactividadinsert">
+      </div>
+      <div class="modal-footer">
+        <button  id="btCancelarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button id="btInsertModalActividad" type="button" class="btn btn-primary">Insertar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!---------------- FINAL MODAL ACTIVIDADES ----------------------->
+
+
+<!---------------- MODAL CARGA ----------------------->
+<div class="modal fade" id="pleaseWaitDialogDelete" role="dialog"><!-- data-backdrop="static" data-keyboard="false" -->
+        <div class="modal-body" height="100%">
+            <div id="ajax_loader_delete">
+                <img src="img/loading_delete.gif" width="600px" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
+        </div>
+    </div>	
+<!-- End Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="pleaseWaitDialog" role="dialog"><!-- data-backdrop="static" data-keyboard="false" -->
+        <div class="modal-body" height="100%">
+            <div id="ajax_loader">
+                <img src="img/loading.gif" width="332" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
+        </div>
+    </div>	
+<!-- End Modal -->
+
+<!---------------- FINAL MODAL CARGA ----------------------->
+
+<!-------------------------- FINAL MODALES ------------------------------------------------->
+
+<!--<div class="modal fade" id="modal-insert" tabindex="-1" role="dialog">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--        <h4 class="modal-title">Insertar</h4>-->
+<!--      </div>-->
+<!--      <div class="modal-body form-group" >-->
+<!--        <input class="form-control" type="text" id="email" placeholder="Correo electrónico">-->
+<!--        <br>-->
+<!--        <input class="form-control" type="password" id="password" placeholder="Clave de acceso">-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>-->
+<!--        <button id="btInsertUser" type="button" class="btn btn-primary">Insertar</button>-->
+<!--      </div>-->
+<!--    </div><!-- /.modal-content -->
+<!--  </div><!-- /.modal-dialog -->
+<!--</div><!-- /.modal -->
+
+<!--<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--        <h4 class="modal-title">Editar</h4>-->
+<!--      </div>-->
+<!--      <div class="modal-body form-group" >-->
+<!--        <input class="form-control" type="text" id="editemail" placeholder="Correo electrónico">-->
+<!--        <br>-->
+<!--        <input class="form-control" type="password" id="editpassword" placeholder="Clave de acceso">-->
+<!--        <br>-->
+<!--        <input class="form-control" type="hidden" id="pkeditemail">-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>-->
+<!--        <button id="btEditUser" type="button" class="btn btn-primary">Editar</button>-->
+<!--      </div>-->
+<!--    </div><!-- /.modal-content -->
+<!--  </div><!-- /.modal-dialog -->
+<!--</div><!-- /.modal -->
+
+<footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3>Subscribe to our Newsletter for latest news.</h3>
+			<div id="message-newsletter">
+			</div>
+			<form method="post" action="assets/newsletter.php" name="newsletter" id="newsletter" class="form-inline">
+				<input name="email_newsletter" id="email_newsletter" type="email" value="" placeholder="Your Email" class="form-control">
+				<button id="submit-newsletter" class=" button_outline"> Subscribe</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<hr>
+
+<div class="container" id="nav-footer">
+	<div class="row text-left">
+		<div class="col-md-3 col-sm-3">
+			<h4>Browse</h4>
+			<ul>
+				<li><a href="prices_plans.html">Prices</a></li>
+				<li><a href="courses_grid.html">Courses</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li><a href="contacts.html">Contacts</a></li>
+			</ul>
+		</div><!-- End col-md-4 -->
+		<div class="col-md-3 col-sm-3">
+			<h4>Next Courses</h4>
+			<ul>
+				<li><a href="course_details_1.html">Biology</a></li>
+				<li><a href="course_details_2.html">Management</a></li>
+				<li><a href="course_details_2.html">History</a></li>
+				<li><a href="course_details_3.html">Litterature</a></li>
+			</ul>
+		</div><!-- End col-md-4 -->
+		<div class="col-md-3 col-sm-3">
+			<h4>About Learn</h4>
+			<ul>
+				<li><a href="about_us.html">About Us</a></li>
+				<li><a href="apply_2.html">Apply</a></li>
+				<li><a href="#">Terms and conditions</a></li>
+				<li><a href="register.html">Register</a></li>
+			</ul>
+		</div><!-- End col-md-4 -->
+		<div class="col-md-3 col-sm-3">
+			<ul id="follow_us">
+				<li><a href="#"><i class="icon-facebook"></i></a></li>
+				<li><a href="#"><i class="icon-twitter"></i></a></li>
+				<li><a href="#"><i class=" icon-google"></i></a></li>
+			</ul>
+			<ul>
+				<li><strong class="phone">+0034 43244 44</strong><br><small>Mon - Fri / 9.00AM - 06.00PM</small></li>
+				<li>Questions? <a href="#">questions@domain.com</a></li>
+			</ul>
+		</div><!-- End col-md-4 -->
+	</div><!-- End row -->
+</div>
+<div id="copy_right">© 1998-2014</div>
+</footer>
+
+<div id="toTop">Back to top</div>
+
+
+<!-- JQUERY -->
+<script src="js/external/jquery-1.10.2.min.js"></script>
+
+<!-- OTHER JS --> 
+<script src="js/external/superfish.js"></script>
+<script src="js/external/bootstrap.min.js"></script>
+<script src="js/external/retina.min.js"></script>
+<script src="js/assets/validate.js"></script>
+<script src="js/external/jquery.placeholder.js"></script>
+<script src="js/external/functions.js"></script>
+<script src="js/external/classie.js"></script>
+<script src="js/external/uisearch.js"></script>
+<script src="js/external/custom-file-input.js"></script>
+
+<script>
+	new UISearch( document.getElementById( 'sb-search' ) );
+</script>
+
+<!-- Jquery academia -->
+<script src="js/scriptAcademia.js"></script>
+<script src="js/scriptEstilos.js"></script>
+
+<script src="js/external/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+
+  </body>
+</html>

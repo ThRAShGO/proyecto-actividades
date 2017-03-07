@@ -1,0 +1,60 @@
+USERS
+  -ID.
+  -USERNAME.
+  -PASSWORD.
+  -STATE
+
+ROL_TYPES
+  - ID.
+  - NAME.
+  - ALLOW_TO.
+
+DEPARTMENT
+  - ID.
+  - NAME.
+
+MEMBERS
+  - ID.
+  - ID_CARD.
+  - NOMBRE.
+  - DEPARTMENT FOREIGN KEY DEPARTMENT
+  - ADM  FOREIGN KEY ADM_TYPES
+  - USER FOREIGN KEY USERS
+
+GROUPS.
+  - ID.
+  - BRANCH.
+  - LEVEL.
+
+ACTIVITIES
+  - ID.
+  - DESCRIPTION.
+  - DATE.
+  - GROUP.
+  - OWNER.
+  
+Hemos revisado las tablas y de las 6 que se han creado las podemos dejar en
+  3 para no liar mucho la base de datos. Quedaría de la siguiente manera:
+  
+PROFESOR
+    -idProfesor
+    -contrasenia
+    -departamento
+    *-administrador
+    
+ACTIVIDADES
+    -idActividad
+    -titulo
+    -descripcion
+    -foto
+    -fechaActividad
+        -fechaInicio
+        -fechaFin
+    -idProfesor
+    -idGrupo
+    
+GRUPO
+    -idGrupo
+    -nivel
+    -titulacion
+    -promocion

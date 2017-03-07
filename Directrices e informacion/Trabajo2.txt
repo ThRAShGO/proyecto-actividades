@@ -1,0 +1,36 @@
+--Mode
+
+Actividades de un centro educativo (LandingPage)
+
+Actividades extraescolares/Cursos/...
+
+	- Crear libria de canvas (Dibujar graficos)
+	- Tema multilenguaje (archivos .po)
+
+--Carmelo
+
+1) Antecedentes: una empresa quiere realizar una pag web para gestionar las actividades extraescolares de un ies
+
+- El desarrollo se debe realizar en 5 semanas
+
+2) Requisitos: Las actividades son organizadas por los profesores y se realizan con un grupo del centro.
+
+- Informacion de una actividad: Profesor/Departamento/Grupo/TituloCorto/Descripcion/Fecha/Lugar/HoraInicio/HoraFinalizacion/Foto(1 opcional)
+
+- Informacion del profesor: NombreCompleto/Departamento
+
+- Informacion del grupo: Nombre/Nivel
+
+Cada profesor puede dar de alta y modificar las actividades que cree, los del equipo directivo puede crear y edicar cualquier actividad
+
+(Los administradores puede ser tabla aparte o modificar la tabla profesores)
+
+
+NECESARIO
+
+- Back-end (Crear actividades, editar) 
+- Front-end (Ver la lista de actividades)
+
+Consulta actividades, entre fechas, grupo, profesor
+
+Gestion de datas ajax
