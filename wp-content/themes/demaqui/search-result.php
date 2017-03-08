@@ -1,3 +1,6 @@
+<div class="col-md-4" id="side">
+            <?php get_sidebar(); ?>
+        </div>
 <div class="col-xs-12 col-md-8 col-lg-8">
 <?php if ($result): ?>
     <h5>Obtenidos <?php echo count($result); ?> resultados.</h5>
@@ -30,6 +33,3 @@
     wp_reset_query();
 ?>
 </div>
-<div class="col-md-4" id="side">
-            <?php get_sidebar(); ?>
-        </div>

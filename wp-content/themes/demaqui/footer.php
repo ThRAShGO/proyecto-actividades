@@ -153,6 +153,10 @@
 <script src="<?php  bloginfo('template_directory');?>/js/uisearch.js"></script>
 <script>new UISearch( document.getElementById( 'sb-search' ) );</script>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 
 <!-- GOOGLE MAP -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsVHYmOWYy9WrBFNwC7kISgqNzu3fvRTM"></script>

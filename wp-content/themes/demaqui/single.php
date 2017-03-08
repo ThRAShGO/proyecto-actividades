@@ -5,13 +5,19 @@
     /* si estuvieramos dentro del loop nos devolveria el id del post, no de la pagina */
     global $post;
     $ID_pag = $post->ID;
-    $nComentarios = get_comments_number(' No hay comentarios', ' 1 comentario', ' % comentarios');
+    $categories = get_the_category();
+	$output = '';
+	if ( ! empty( $categories ) ) {
+		foreach( $categories as $category ) {
+			$output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'Ver todos los post en %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . ' ';
+		}
+	}
 ?>
     <section id="sub-header">
         <div class="container">
         	<div class="row">
         		<div class="col-md-10 col-md-offset-1 text-center">
-        			<h1>Learn Blog</h1>
+        			<h1>Logia Blog</h1>
         			<p class="lead boxed ">Ex utamur fierent tacimates duis choro an</p>
         			<p class="lead">
         				Lorem ipsum dolor sit amet, ius minim gubergren ad. At mei sumo sonet audiam, ad mutat elitr platonem vix. Ne nisl idque fierent vix. 
@@ -44,12 +50,12 @@
         							<ul>
         								<li><i class="icon-calendar-empty"></i>Fecha <span><?php the_time('j F,Y'); ?></span></li>
         								<li><i class="icon-user"></i>Por <a href="#"><?php the_author(); ?></a></li>
-        								<li><i class="icon-tags"></i>Tags <a href="#">Works</a> <a href="#">Personal</a></li>
+        								<li><i class="icon-tags"></i>Categorias <?php echo $output?></li>
         							</ul>
         						</div>
-        						<div class="post-right"><i class="icon-comment"></i><a href="#">25 </a>Comments</div>
+        						<div class="post-right"><i class="icon-comment"></i><?php comments_number(' No hay comentarios', ' 1 comentario', ' % comentarios'); ?></div>
         					</div>
-        					<h2><a href="single_post.html" title="single_post.html"><?php the_title() ?></a></h2>
+        					<h2><?php the_title() ?></h2>
         					<p>
         						<?php the_content() ?>
         					</p>

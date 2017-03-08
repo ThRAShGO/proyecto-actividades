@@ -146,7 +146,7 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="on"
-						style="z-index: 5">y
+						style="z-index: 5">
 					</div>
 
 					<!-- LAYER NR. 3 -->
@@ -210,7 +210,7 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="on"
-						style="z-index: 5">y
+						style="z-index: 5">
 					</div>
 
 					<!-- LAYER NR. 3 -->

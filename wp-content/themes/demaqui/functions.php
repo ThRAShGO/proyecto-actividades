@@ -322,12 +322,12 @@ add_action('edit_user_profile_update', 'save_skills');
         $type = 'plain';    
     } 
         
-    // Ponemos los valores de$endsize y $midsize con un valor entero, para ello u
+    // Ponemos los valores de $endsize y $midsize con un valor entero, para ello u
     $endsize = absint($endsize);
     $midsize = absint($midsize);
     
     $pagination = array(
-        // El @ delante de la fucion
+        // El @ delante de la funcion
         'base' => @add_query_arg('paged', '%#%'), //esta @ elimina el echo de los warnings
         'format' => '', //formato de la url
         'total' => $wp_query->max_num_pages, //total de las páginas a mostrar
@@ -337,7 +337,7 @@ add_action('edit_user_profile_update', 'save_skills');
         'midsize' => $midsize, //Cuantos números mostrar en la página al principio y fin 
         'type' => $type, //tipo de estructura que va a devolver, los valores de los arrays
         'prev_text' => '&lt;&lt;', //lo que saldrá en las etiquetas de anterior
-        'next_text' => '&gt;&gt;' //lo que saldrá en las etiquetas de siguiente
+        'next_text' => '&gt;&gt;', //lo que saldrá en las etiquetas de siguiente
     );
     
     // Las funciones que tenemos en la parte de abajo son para evitar fallos en caso de que los permalinks 
@@ -411,40 +411,191 @@ add_action('edit_user_profile_update', 'save_skills');
         echo $popular;
         }
         
-        // paginacion
-            // function get_paginate_page_links( $type = 'list' , $endsize = 1 , $midsize = 1 ) {
-            //     global $custom_query, $wp_rewrite;
-             
-            //     $current = get_query_var('paged') > 1 ? get_query_var('paged') : 1;
-                
-            //     if(! in_array($type, array('plain','list', 'array'))) $type = 'plain' ;
-                
-            //     $endsize = absint($endsize);
-            //     $midsize = absint($midsize);
-                
-            //     $pagination = array(
-            //                 'base' => @add_query_arg('paged' , '%#%'),
-            //                 'format' => '',
-            //                 'total' => $custom_query->max_num_pages,
-            //                 'current' => $current,
-            //                 'show_all' => false,
-            //                 'end_size' => $endsize,
-            //                 'mid_size' => $midsize,
-            //                 'prev_next' => true,
-            //                 'prev_text' => __('« Previous'),
-            //                 'next_text' => __('Next »'),
-            //                 'type' => $type 
-            //     );
-                
-            //     //Re-construimos la url segun el tipo de pag
-            //     if($wp_rewrite->using_permalinks()){
-            //         $pagination['base'] = user_trailingslashit (trailingslashit( remove_query_arg('s', get_pagenum_link(1) ) ).'page/%#%/', paged);
-            //     }
-                
-            //     if( ! empty ($custom_query->query_vars['s'])){
-            //         $pagination['add_args'] = array ('s' => get_query_var);
-            //     }
-                
-            //     return paginate_links($pagination);
-            // }
+        function get_paginate_page_links( $type ='list', $endsize = 1, $midsize = 1){
+            global $wp_query, $wp_rewrite;
+            
+            $current  = get_query_var('paged') > 1 ? get_query_var('paged') : 1;    
+            
+            if(! in_array($type, array('plain', 'list', 'array'))) $type = 'plain';    
+            
+            $endsize = absint($endsize);    
+            $midsize = absint($midsize);
+            
+            
+            $pagination = array(
+                'base' => @add_query_arg('paged', '%#%'),
+                'format' => '',
+                'total' => $wp_query->max_num_pages,
+                'current' => $current,
+                'show_all' => false,
+                'end_size' => $endsize,
+                'mid_size' => $midsize,
+                'type' => $type,
+                'prev_text' => '<i class="icon-angle-left"></i>',
+                'next_text' => '<i class="icon-angle-right"></i>',
+                //    'after_page_number' => '<li>',
+                //    'before_page_number' => '</li>'
+            );
+            
+            if($wp_rewrite->using_permalinks()){
+                $pagination['base'] = user_trailingslashit( trailingslashit(remove_query_arg('s', get_pagenum_link(1))).'page/%#%', 'paged');
+            }
+            
+            if(!empty( $wp_query->query_vars['s'])){
+                $pagination['add_args'] = array( 's' => get_query('s') );
+            }
+            return paginate_links($pagination);
+        }
+        
+        function prepareArguments($query_string) {
+
+            /* separamos los parametros del querystring */
+        
+            // operator: = like
+            // s =search datas
+            // f fields from
+            // t taxonies
+        
+        
+        
+            $query_args = $_GET; //Uso get en lugar de query_string por problemas en los parametros de la vatiable
+            //print_r($_GET);
+            $result_array = [];
+            if ($_GET['s'] == '')
+                return $result_array; // Si no se ha introducido texto se para el proceso
+            $result_array['operator'] = 'LIKE'; //Operador por defecto
+        
+            if ($query_args) {
+                foreach ($query_args as $key => $string) {
+                    if ($key == 's' && $string != '') {
+                        $result_array['s'][] = $string;
+                        $words = explode(' ', $string);
+                        
+                        foreach ($words as $word) {
+                            $result_array['s'][] = $word;
+                        }
+                    } else {
+                        if ($key == 'operator') {
+                            $result_array['operator'] = ($string != 'LIKE') ? ' = ' : "LIKE";
+                        } else if ($key == 'author_name') {
+                            $result_array['f'][] = "wp_users.user_nicename";
+                        } else if ($key == 'tag') {
+                            if (!isset($result_array['f']) || !in_array("wp_terms.slug", $result_array['f'])) {
+                                $result_array['f'][] = "wp_terms.slug";
+                            }
+                            $result_array['t'][] = "(wp_term_taxonomy.taxonomy = 'post_tag')";
+                        } else if ($key == 'category_name') {
+                            if (!isset($result_array['f']) || !in_array("wp_terms.slug", $result_array['f'])) {
+                                $result_array['f'][] = "wp_terms.slug";
+                            }
+                            $result_array['t'][] = "(wp_term_taxonomy.taxonomy = 'category')";
+                        }
+                    }
+                }
+            } else {
+                return $search_array;
+            }
+            return $result_array;
+        }
+        
+        function get_search_result($query_string) {
+            $arguments = prepareArguments($query_string);
+            if (!isset($arguments['s']))
+                return $result; // Si no se ha introducido texto se para el proceso
+                /* Varaiables de la consulta */
+        
+            $where = "";
+            $defaultSearch = "";
+            $tmpTax = "";
+            $tmpFields = "";
+            $result = [];
+            $op = $arguments['operator'];
+            /* Parametros a ingresar el prepare */
+            $params = [];
+            /* Construimos la consulta */
+            if (isset($arguments['t'])) {
+                $tmpTax = "(";
+                foreach ($arguments['t'] as $key => $value) {
+                    $tmpTax .= ' ' . $value . ' OR ';
+                }
+                $tmpTax = substr($tmpTax, 0, -3) . ') AND ';
+            }
+        
+            if (isset($arguments['f'])) {
+                $tmpFields = "( ";
+                if (is_array($arguments['f'])) {
+                    foreach ($arguments['f'] as $key => $field) {
+                        foreach ($arguments['s'] as $key2 => $value) {
+                            $tmpFields .= "(" . $field . " " . $op . " %s ) OR ";
+                            if ($op == "LIKE") {
+                                $params[] = "%" . $value . "%";
+                            } else {
+                                $params[] = $value;
+                            }
+                        }
+                    }
+                }
+                $tmpFields = substr($tmpFields, 0, -3) . ') AND ';
+            }
+        
+            // busqueda si no he marcado autor, etiqueta o categoria
+            if (!isset($arguments['t']) && !isset($arguments['f'])) {
+                foreach ($arguments['s'] as $key => $value) {
+                    $defaultSearch .= " ((wp_posts.post_name " . $op . " %s) OR (wp_posts.post_content " . $op . " %s)) OR ";
+                    if ($op == "LIKE") {
+                        $params[] = "%" . $value . "%";
+                        $params[] = "%" . $value . "%";
+                    } else {
+                        $params[] = $value;
+                        $params[] = $value;
+                    }
+                }
+                $defaultSearch = substr($defaultSearch, 0, -3) . ' AND ';
+            }
+        
+            $where = $tmpTax . $tmpFields . $defaultSearch;
+            $where = ' WHERE (' . substr($where, 0, -4) . ') AND ';
+        
+            $joinsSelect = "SELECT distinct wp_posts.ID
+        
+                            FROM wp_term_taxonomy
+        
+                            LEFT OUTER JOIN wp_terms
+        
+                                ON wp_terms.term_id = wp_term_taxonomy.term_id
+        
+                            RIGHT OUTER JOIN wp_term_relationships
+        
+                                ON wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id
+        
+                            RIGHT OUTER JOIN wp_posts
+        
+                                ON wp_posts.ID = wp_term_relationships.object_id
+        
+                            LEFT OUTER JOIN wp_users
+        
+                                ON wp_users.ID = wp_posts.post_author ";
+        
+            //Tipo de busqueda y oreden se podria pasar como parametros tambien( mirara )
+            $orderAndType = "   (wp_posts.post_type = 'post')
+        
+                                AND (wp_posts.post_status = 'publish') 
+        
+                                ORDER BY wp_posts.post_date DESC";
+        
+            $consulta = $joinsSelect . $where . $orderAndType;
+        
+            global $wpdb;
+            //echo "SQL sin procesar" . $consulta;
+            $sql = $wpdb->prepare($consulta, $params);
+            //echo "params" . $params;
+            $ids = $wpdb->get_results($sql);
+            //echo "el ids vale " . $ids;
+            //echo "SQL procesada" . $sql;
+        
+            foreach ($ids as $resultpost) {
+                $result[] = get_post($resultpost->ID);
+            }
+            return $result;
+        }
 ?>
