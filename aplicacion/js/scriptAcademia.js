@@ -728,7 +728,7 @@
         }).done(function (json) {
             $('#pleaseWaitDialog').modal();
             objetoTablaGrupos.destroy();
-            if(json.r > 0) {
+            //if(json.r > 0) {
                 $( "#idgrupo").val('');
                 $('#editnivel').val('');
                 $('#edittitulacion').val('');
@@ -736,9 +736,9 @@
                 $('#modal-edit-grupos').modal('hide');
                 actualizarGrupos(json);
                 $('#pleaseWaitDialog').modal('hide');
-            }else{
+            // }else{
                 
-            }
+            // }
 
         }); 
         }

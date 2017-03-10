@@ -49,7 +49,7 @@
         						<div class="post-left">
         							<ul>
         								<li><i class="icon-calendar-empty"></i>Fecha <span><?php the_time('j F,Y'); ?></span></li>
-        								<li><i class="icon-user"></i>Por <a href="#"><?php the_author(); ?></a></li>
+        								<li><i class="icon-user"></i>Por <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a></li>
         								<li><i class="icon-tags"></i>Categorias <?php echo $output?></li>
         							</ul>
         						</div>

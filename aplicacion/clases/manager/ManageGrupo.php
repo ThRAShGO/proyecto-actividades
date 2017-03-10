@@ -112,9 +112,9 @@ class ManageGrupo {
             unset($campos['promocion']);
         }
         
-        var_dump($campos);
-        var_dump($id);
-        exit();
+        // var_dump($campos);
+        // var_dump($id);
+        // exit();
         
         return $this->db->updateParameters(self::TABLA, $campos, array('idGrupo' => $id));
     }

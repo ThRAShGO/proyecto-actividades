@@ -168,7 +168,7 @@ get_template_part('nav');
         type: 'GET',
         dataType: 'json',
     }).done(function (objetoJson){
-         actualizarActividades(objetoJson, ajaxGrupos, ajaxProfesores);
+        actualizarActividades(objetoJson, ajaxGrupos, ajaxProfesores);
     });
     
     function actualizarActividades (objetoJson, ajaxGrupos, ajaxProfesores){
